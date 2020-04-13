@@ -1,6 +1,6 @@
 language: generic
-sudo: required #travis we need sudo to execute this build
-services:      #travis we need a copy of docker
+sudo: required
+services:      
     - docker
 
 before-install:
@@ -8,3 +8,15 @@ before-install:
 
 script:
     - docker run -e CI=true gabrielos/docker-react npm run test
+
+deploy:
+    provider: elasticbeanstalk
+    region: "us-east-2"
+    app: "docker-react"
+    env: "DockerReact-env"
+    bucket_name: "elasticbeanstalk-us-east-2-004140532698"
+    bucket_path: "docker-react"
+    on:
+        branch: master
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key: $AWS_SECRET_KEY
