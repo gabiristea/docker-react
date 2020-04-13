@@ -1,0 +1,10 @@
+language: generic
+sudo: required #travis we need sudo to execute this build
+services:      #travis we need a copy of docker
+    - docker
+
+before-install:
+    - docker build -t gabrielos/docker-react -f Dockerfile.dev .
+
+script:
+    - docker run -e CI=true gabrielos/docker-react npm run test
