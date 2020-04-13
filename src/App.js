@@ -16,7 +16,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Distractie folosind git branch :)
         </a>
       </header>
     </div>
